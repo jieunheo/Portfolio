@@ -5,9 +5,256 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #111;
+  color: #fff;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li, ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+div, p, ul, li, header, main, footer, h1, h2, h3, h4, h5, h6, textarea {
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+  padding: 20px;
+  font-size: 16px;
+}
+
+header, main {
+  width: 85%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  flex-grow: 1;
+  color: steelblue;
+}
+
+.btn {
+  background-color: steelblue;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: #fff;
+
+  transition: all .2s;
+}
+
+.btn:hover {
+  transform: scale(95%);
+}
+
+.btn-select {
+  background-color: tomato;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav li {
+  padding: 5px;
+}
+
+.nav li:hover {
+  color: steelblue;
+}
+
+.actions {
+  padding: 10px 0;
+  text-align: right;
+}
+
+.actions button {
+  margin-left: 10px;
+}
+
+
+
+.friend-wrap {
+  display: flex;
+  gap: 5%;
+  align-items: stretch;
+}
+
+.friend-wrap .left {
+  width: 55%
+}
+
+.friend-wrap .right {
+  width: 40%
+}
+
+@media screen and (max-width: 860px) {
+  .friend-wrap .left {
+    width: 100%
+  }
+
+  .friend-wrap .right {
+    display: none;
+  }
+}
+
+.star-list > div {
+  margin-bottom: 20px;
+}
+
+.star {
+  background-color: #fff;
+  color: #111;
+  padding: 20px;
+  border-radius: 18px;
+}
+
+.star-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.user-id {
+  font-weight: 700;
+  flex-grow: 1;
+}
+
+.star-photo {
+  width: 100%;
+}
+
+
+.my-profile {
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.my-profile .profile {
+  width: 60px;
+  height: 60px;
+}
+
+.my-profile .user-id {
+  flex-grow: 1;
+}
+
+.friend-list {
+  border-top: 1px solid #fff;
+  padding-top: 20px;
+}
+
+.friend-list .friend {
+  margin-bottom: 15px;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.newstar-wrap {
+  padding-top: 30px;
+}
+
+.newstar-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  align-items: stretch;
+}
+
+.newstar-form .left {
+  width: 45%
+}
+
+.newstar-form .right {
+  width: 50%
+}
+
+.newstar-text {
+  width: 100%;
+  height: 20vw;
+}
+
+@media screen and (max-width: 860px) {
+  .newstar-form .left {
+    width: 100%
+  }
+
+  .newstar-form .right {
+    width: 100%;
+  }
+  
+  .newstar-text {
+    height: 40vw;
+  }
+}
+
+
+
+
+
+.newstar-photo-wrap {
+  text-align: center;
+}
+
+.newstar-photo {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.newstar-file {
+  position: relative;
+  width: 1px;
+  height: 1px;
+  left: -999px;
+  outline: 3px solid white;
+}
+
+.newstar-file:focus + .photo-btn {
+  outline: 1px solid #fff;
+  outline-offset: 5px;
+}
+
+.newstar-file:focus:not(:focus-visible) + .photo-btn {
+  outline: none;
+}
+
+.photo-btn {
+  display: inline-block;
+  padding: 15px 20px;
+  text-align: center;
+  width: 200px;
+  margin-bottom: 15px;
 }
