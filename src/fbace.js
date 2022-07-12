@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
@@ -17,3 +18,34 @@ export const firebaseInstance = initializeApp(firebaseConfig);
 export const db = getFirestore(firebaseInstance);
 
 export const storage = getStorage(firebaseInstance);
+
+const auth = getAuth(firebaseInstance);
+export const signup = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const login = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password);
+}
+
+export const logout = () => {
+  signOut(auth);
+}
+
+export const getUser = () => {
+  const user = auth.currentUser;
+  if (user !== null) {
+    const displayName = user.displayName;
+    const email = user.email;
+    const photoURL = user.photoURL;
+    const uid = user.uid;
+
+    return {
+      displayName,
+      email,
+      photoURL,
+      uid
+    }
+  }
+}
+

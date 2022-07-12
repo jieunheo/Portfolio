@@ -1,10 +1,13 @@
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { ref as sRef, deleteObject } from "firebase/storage";
 import { useState } from "react";
-import { db, storage } from "../../fbace";
+import { db, getUser, storage } from "../../fbace";
 
 
 const OutstarItem = ({ star }) => {
+  const my = getUser();
+
+  const [text, setText] = useState(star.text);
   const [like, setLike] = useState(false);
   const [isModify, setIsModify] = useState(false);
 
@@ -21,8 +24,9 @@ const OutstarItem = ({ star }) => {
     console.log(event.target[0].value);
 
     const userRef = await updateDoc(doc(db, "outstars", star.id), {
-     text: event.target.value
+     text: event.target[0].value
     });
+    setText(event.target[0].value);
     modifyHandler();
   }
 
@@ -50,10 +54,10 @@ const OutstarItem = ({ star }) => {
         <p className='star-date'>{new Date(star.date).toLocaleString()}</p>
       </div>
       {star.photo.length > 0 && <img className='star-photo' src={star.photo} alt={star.text} />}
-      {!isModify && <p className='star-text'>{star.text}</p>}
+      {!isModify && <p className='star-text'>{text}</p>}
       {isModify && (
         <form onSubmit={modifyOkHandler}>
-          <textarea defaultValue={star.text}></textarea>
+          <textarea className='modi-text' defaultValue={star.text}></textarea>
           {isModify && (
             <div className='actions'>
               <button type='button' className={'btn'} onClick={modifyHandler}>취소</button>
@@ -65,8 +69,12 @@ const OutstarItem = ({ star }) => {
       {!isModify && (
         <div className='actions'>
             <button type='button' className={`btn ${like && 'btn-select'}`} onClick={likeHandler}>{like ? '좋아요 취소' : '좋아요'}</button>
-            <button type='button' className={'btn'} onClick={modifyHandler}>수정</button>
-            <button type='button' className={'btn'} onClick={deleteHandler}>삭제</button>
+            {my.uid === star.userNum && (
+              <>
+                <button type='button' className={'btn'} onClick={modifyHandler}>수정</button>
+                <button type='button' className={'btn'} onClick={deleteHandler}>삭제</button>
+              </>
+            )}
         </div>
       )}
     </div>

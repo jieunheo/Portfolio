@@ -2,7 +2,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref as sRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { db, storage } from '../../fbace';
+import { db, getUser, storage } from '../../fbace';
 
 import SliceSection from '../UI/SliceSection';
 import OutstarForm from './OutstarForm';
@@ -15,6 +15,7 @@ const NewStar = () => {
   const [url, setUrl] = useState('');
   const [photo, setPhoto] = useState('');
   const navigate = useNavigate();
+  const my = getUser();
 
   const addOutstar = async (event) => {
     event.preventDefault();
@@ -34,9 +35,9 @@ const NewStar = () => {
   const addText = async (text, data, fileName) => {
     console.log('url => ', url);
     const docRef = await addDoc(collection(db, "outstars"), {
-      userNum: 1,
-      userId: 'outmoon',
-      profile: 'https://t1.daumcdn.net/cfile/tistory/1116E83A4FA7A13C24',
+      userNum: my.uid,
+      userId: my.email,
+      profile: my.photoURL ? my.photoURL : 'https://www.sciencetimes.co.kr/wp-content/uploads/2017/01/333524.jpg',
       text: text,
       photo: data ? data : '',
       fileName: fileName ? fileName : '',
