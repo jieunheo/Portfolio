@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { getUser } from "../../fbace";
 
 
@@ -35,7 +36,7 @@ const FriendList = ({ chat, setChat, setFormId }) => {
     <div>
       <div className='friend my-profile'>
         <img className='profile' src={my.photoURL ? my.photoURL : 'https://www.sciencetimes.co.kr/wp-content/uploads/2017/01/333524.jpg'} alt='profile' />
-        <p className='user-id'><a href='#'>{my.email}</a></p>
+        <p className='user-id'><Link to='/profile'>{my.email}</Link></p>
       </div>
       <div>
         <ul className='friend-list'>

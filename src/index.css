@@ -377,3 +377,44 @@ header h1 {
   text-align: right;
   margin-left: auto;
 }
+
+
+/* *************** profile ************** */
+.my-profile {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-name {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.profile-image img {
+  width: 100%;
+}
+
+.profile-email label,
+.profile-newName label {
+  display: inline-block;
+  width: 60px;
+}
+
+.profile-newName input {
+  padding: 5px 10px;
+}
+
+.profile-actions {
+  text-align: center;
+}
+
+.profile-button {
+  width: 100%;
+  padding: 10px 15px;
+}

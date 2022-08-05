@@ -80,10 +80,10 @@ const Profile = ({ userId }) => {
   }
 
   return (
-    <div>
+    <div className="my-profile">
       <form onSubmit={updateProfileHandler}>
-        <div>{name === email.split('@')[0] ? email.split('@')[0] : name}'s Prodile</div>
-        <div>
+        <div className="profile-name">{name === email.split('@')[0] ? email.split('@')[0] : name}'s Prodile</div>
+        <div className="profile-image">
           <img src={photoURL} alt='profile' />
         </div>
         {/* <div>
@@ -91,8 +91,8 @@ const Profile = ({ userId }) => {
           <input className='newstar-file' id='new-photo' type='file' accept='img/*' onChange={handleFileOnChange} />
           <label className='btn photo-btn' htmlFor='new-photo'>사진 선택하기</label>
         </div> */}
-        <p>email: {email}</p>
-        <p>
+        <p className="profile-email"><label>email: </label>{email}</p>
+        <p className="profile-newName">
           <label htmlFor="name">name: </label>
           <input id="name" value={newName} type="text" onChange={nameChange} />
         </p>
@@ -104,7 +104,9 @@ const Profile = ({ userId }) => {
           <label htmlFor="passwordOk">password ok: </label>
           <input id="passwordOk" type='password' />
         </p> */}
-        <button type="submit">프로필 수정하기</button>
+        <div className="profile-actions">
+          <button className="btn profile-button" type="submit">프로필 수정하기</button>
+        </div>
       </form>
 
     </div>
