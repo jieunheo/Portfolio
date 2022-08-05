@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import firebase from "firebase/compat/app";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDkzxMq3vdqrKo7FER17MsP11za6Deb1Ho",
@@ -46,6 +47,7 @@ export const getUser = () => {
       photoURL,
       uid
     }
+  } else {
+    return null;
   }
 }
-

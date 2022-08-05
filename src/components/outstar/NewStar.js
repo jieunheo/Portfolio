@@ -36,7 +36,7 @@ const NewStar = () => {
     console.log('url => ', url);
     const docRef = await addDoc(collection(db, "outstars"), {
       userNum: my.uid,
-      userId: my.email,
+      userId: my.displayName ? my.displayName : my.email.split('@')[0],
       profile: my.photoURL ? my.photoURL : 'https://www.sciencetimes.co.kr/wp-content/uploads/2017/01/333524.jpg',
       text: text,
       photo: data ? data : '',

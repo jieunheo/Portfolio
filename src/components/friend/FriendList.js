@@ -19,8 +19,17 @@ const DEMO_LIST = [
   }
 ];
 
-const FriendList = () => {
+const FriendList = ({ chat, setChat, setFormId }) => {
   const my = getUser();
+
+  const chatHandler = (event) => {
+    console.log(event);
+  }
+
+  const goChat = (event) => {
+    // console.log(event.target.name);
+    setFormId(event.target.name)
+  }
 
   return (
     <div>
@@ -31,10 +40,10 @@ const FriendList = () => {
       <div>
         <ul className='friend-list'>
         {DEMO_LIST.length > 0 ? DEMO_LIST.map(friend => (
-          <li className='friend' key={friend.uid}>
+          <li className='friend' key={friend.uid} onClick={chatHandler}>
             <img className='profile' src={friend.photoURL} alt='profile' />
             <p className='user-id'><a href='#'>{friend.email}</a></p>
-            <button className='btn'>채팅하기</button>
+            <button className='btn' name={friend.uid} onClick={goChat}>{chat ? '채팅중' : '채팅하기'}</button>
           </li>
         )) : (
           <li>친구가 없습니다.</li>

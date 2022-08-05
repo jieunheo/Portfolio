@@ -1,11 +1,13 @@
-import { Route, Routes, BrowserRouter, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
 
 import NewStar from './components/outstar/NewStar';
 import Header from './components/UI/Header';
 import OutstarFriend from './components/outstar/OutstarFriend';
 import Login from './components/auth/Login';
+import Profile from './components/auth/Profile';
 import { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import Chat from './components/chat/Chat';
 
 function App() {
   const [userId, setUserId] = useState(null);
@@ -32,6 +34,8 @@ function App() {
               <Routes>
                 <Route path='/' element={<OutstarFriend userId={userId}/>} />
                 <Route path='/new-star' element={<NewStar userId={userId} />} />
+                {/* <Route path='/chat' element={<Chat userId={userId} />} /> */}
+                <Route path='/profile' element={<Profile userId={userId} />} />
                 <Route path='/*' element={<Navigate to='/' />} />
               </Routes>
             ) : (

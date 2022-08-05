@@ -50,7 +50,7 @@ const OutstarItem = ({ star }) => {
     <div className='star'>
       <div className='star-head'>
         <img className='profile' src={star.profile} alt={star.userId} />
-        <p className='user-id'>{star.userId}</p>  
+        <p className='user-id'>{(my.uid === star.userNum && my.displayName) ? my.displayName : star.userId}</p>  
         <p className='star-date'>{new Date(star.date).toLocaleString()}</p>
       </div>
       {star.photo.length > 0 && <img className='star-photo' src={star.photo} alt={star.text} />}

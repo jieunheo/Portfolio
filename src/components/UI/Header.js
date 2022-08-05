@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"
-import { logout } from "../../fbace";
+import { getUser, logout } from "../../fbace";
 
 const Header = ({ userId, setUserId }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(userId !== null) navigate('/');
+    const my = getUser();
+    
+    if(my) {
+      navigate('/');
+    }
   }, [userId]);
 
   const logoutHandler = async () => {
@@ -22,6 +26,8 @@ const Header = ({ userId, setUserId }) => {
         <ul className='nav'>
           <li><Link to='/' >Home</Link></li>
           <li><Link to='/new-star' >new star</Link></li>
+          {/* <li><Link to='/chat' >chat</Link></li> */}
+          <li><Link to='/profile' >Profile</Link></li>
           <li><button onClick={logoutHandler}>logout</button></li>
         </ul>
       </nav>
