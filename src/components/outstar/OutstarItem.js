@@ -1,17 +1,40 @@
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, deleteField, doc, getDocs, orderBy, query, updateDoc, where } from "firebase/firestore";
 import { ref as sRef, deleteObject } from "firebase/storage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db, getUser, storage } from "../../fbace";
 
 
-const OutstarItem = ({ star }) => {
+const OutstarItem = ({ star, isLike }) => {
   const my = getUser();
 
   const [text, setText] = useState(star.text);
   const [like, setLike] = useState(false);
   const [isModify, setIsModify] = useState(false);
 
-  const likeHandler = () => {
+  useEffect(() => {
+    isLike && setLike(true);
+  }, [])
+
+  const likeHandler = async () => {
+    if(like) { // like 취소
+      let likesId = '';
+
+      const likesQuery = query(collection(db, "likes"), orderBy("date", "desc"), where('userId', '==', my.uid), where('outstarId', '==', star.id));
+      const querySnapshotLike = await getDocs(likesQuery);
+      console.log(querySnapshotLike);
+      querySnapshotLike.forEach(async (like) => {
+        likesId = like.id;
+        console.log(likesId);
+        await deleteDoc(doc(db, 'likes', likesId));
+      });
+    } else { // like에 추가
+      const docRef = await addDoc(collection(db, "likes"), {
+        userId: my.uid,
+        outstarId: star.id,
+        date: Date.now()
+      });
+    }
+
     setLike(prevLike => !prevLike);
   }
 

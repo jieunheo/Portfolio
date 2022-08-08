@@ -7,7 +7,7 @@ import Login from './components/auth/Login';
 import Profile from './components/auth/Profile';
 import { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import Chat from './components/chat/Chat';
+import Likes from './components/outstar/Likes';
 
 function App() {
   const [userId, setUserId] = useState(null);
@@ -35,6 +35,7 @@ function App() {
                 <Route path='/' element={<OutstarFriend userId={userId}/>} />
                 <Route path='/new-star' element={<NewStar userId={userId} />} />
                 {/* <Route path='/chat' element={<Chat userId={userId} />} /> */}
+                <Route path='/likes' element={<Likes userId={userId} />} />
                 <Route path='/profile' element={<Profile userId={userId} />} />
                 <Route path='/*' element={<Navigate to='/' />} />
               </Routes>

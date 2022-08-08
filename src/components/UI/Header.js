@@ -25,8 +25,9 @@ const Header = ({ userId, setUserId }) => {
       <nav>
         <ul className='nav'>
           <li><Link to='/' >Home</Link></li>
-          <li><Link to='/new-star' >new star</Link></li>
+          <li><Link to='/new-star' >New Star</Link></li>
           {/* <li><Link to='/chat' >chat</Link></li> */}
+          <li><Link to='/likes' >Likes</Link></li>
           <li><Link to='/profile' >Profile</Link></li>
           <li><button onClick={logoutHandler}>logout</button></li>
         </ul>
