@@ -92,6 +92,10 @@ header h1 {
   margin-left: 10px;
 }
 
+.error {
+  text-align: center;
+  color: red;
+}
 
 
 .friend-wrap {
@@ -381,9 +385,23 @@ header h1 {
 
 /* *************** profile ************** */
 .my-profile {
-  width: 300px;
   margin-left: auto;
   margin-right: auto;
+  width: 70vw;
+  
+  display: flex;
+  gap: 5%;
+  justify-content: center;
+}
+
+.my-profile .left {
+  width: 45%;
+  max-width: 400px;
+}
+
+.my-profile .right {
+  width: 50%;
+  max-width: 400px;
 }
 
 .profile-name {
@@ -392,7 +410,8 @@ header h1 {
 }
 
 .profile-image {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   margin-bottom: 20px;
 }
 
@@ -410,11 +429,26 @@ header h1 {
   padding: 5px 10px;
 }
 
-.profile-actions {
-  text-align: center;
-}
-
 .profile-button {
   width: 100%;
+  max-width: 300px;
   padding: 10px 15px;
+}
+
+.my-profile .star-list {
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 860px) {
+  .my-profile {
+    width: 300px;
+  }
+
+  .my-profile .left {
+    width: 100%
+  }
+
+  .my-profile .right {
+    width: 100%;
+  }
 }

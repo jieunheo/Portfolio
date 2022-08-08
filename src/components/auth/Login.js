@@ -6,6 +6,7 @@ import { login, signup } from "../../fbace";
 
 const Login = ({ userId, setUserId }) => {
   const [isLogin, setIsLogin] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -40,8 +41,10 @@ const Login = ({ userId, setUserId }) => {
     if(event.target[2].name === 'login') {
       login(email.value, password.value)
         .then(result => {
-          console.log(result);
           setUserId(result.uid);
+        })
+        .catch((err) => {
+          setError(err.message);
         });
     } else if(event.target[3].name === 'signup') {
       if(passwordOkRef.current.value === '' || password.value !== passwordOkRef.current.value)  {
@@ -67,6 +70,7 @@ const Login = ({ userId, setUserId }) => {
         {!isLogin && (
         <input ref={passwordOkRef} placeholder='password ok' className='login-password login-password-ok' type='password' />
         )}
+        {error && <p className="error">{error}</p>}
         <button className='btn' name={isLogin ? 'login' : 'signup'} type='submit'>{isLogin ? 'login' : 'signup'}</button>
         <button className='btn toggle' type='button' onClick={toggleLogin}>{isLogin ? 'to signup' : 'to login'}</button>
       </form>

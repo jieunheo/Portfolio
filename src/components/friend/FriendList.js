@@ -35,8 +35,8 @@ const FriendList = ({ chat, setChat, setFormId }) => {
   return (
     <div>
       <div className='friend my-profile'>
-        <img className='profile' src={my.photoURL ? my.photoURL : 'https://www.sciencetimes.co.kr/wp-content/uploads/2017/01/333524.jpg'} alt='profile' />
-        <p className='user-id'><Link to='/profile'>{my.email}</Link></p>
+        <img className='profile' src={my && (my.photoURL ? my.photoURL : 'https://www.sciencetimes.co.kr/wp-content/uploads/2017/01/333524.jpg')} alt='profile' />
+        <p className='user-id'><Link to='/profile'>{my && my.email}</Link></p>
       </div>
       <div>
         <ul className='friend-list'>
