@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { collection, query, getDocs, orderBy } from "firebase/firestore";
-import { db } from '../../fbace';
+import { collection, query, getDocs, orderBy, where } from "firebase/firestore";
+import { db, getUser } from '../../fbace';
 
-import Outstar from "./OutstarItem";
+import OutstarItem from "./OutstarItem";
 
 const OutstarList = () => {
+  const my = getUser();
   const [outstars, setOutstars] = useState([]);
+  const [likes, setLikes] = useState([]);
 
   useEffect(() => {
     readOutstars();
@@ -36,7 +38,7 @@ const OutstarList = () => {
     <div className='star-list'>
       {outstars
         ? outstars.map(star => (
-          <Outstar key={star.id} star={star} />
+          <OutstarItem key={star.id} star={star} />
         )) : (
           <p>없어요</p>
         )}

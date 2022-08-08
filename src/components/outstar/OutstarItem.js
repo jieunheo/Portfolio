@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { db, getUser, storage } from "../../fbace";
 
 
-const OutstarItem = ({ star, isLike }) => {
+const OutstarItem = ({ star }) => {
   const my = getUser();
 
   const [text, setText] = useState(star.text);
@@ -12,8 +12,17 @@ const OutstarItem = ({ star, isLike }) => {
   const [isModify, setIsModify] = useState(false);
 
   useEffect(() => {
-    isLike && setLike(true);
+    getLikes(star.id);
   }, [])
+
+  const getLikes = async (starId) => {
+    const likesQuery = query(collection(db, "likes"), orderBy("date", "desc"), where('userId', '==', my.uid), where('outstarId', '==', starId));
+    const querySnapshotLike = await getDocs(likesQuery);
+    console.log(querySnapshotLike);
+    querySnapshotLike.forEach(async (like) => {
+      like && setLike(true);
+    });
+  }
 
   const likeHandler = async () => {
     if(like) { // like 취소
