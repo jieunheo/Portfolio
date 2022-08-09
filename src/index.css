@@ -108,7 +108,7 @@ header h1 {
 }
 
 .left {
-  width: 55%;
+  width: 45%;
   max-width: 400px;
 }
 
@@ -419,6 +419,11 @@ header h1 {
   .my-profile {
     width: 300px;
   }
+}
+
+.mystar-title {
+  font-weight: 600;
+  font-size: 1.6rem;
 }
 
 

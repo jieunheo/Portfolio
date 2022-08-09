@@ -111,7 +111,7 @@ const Profile = ({ userId }) => {
     <div className="my-profile">
       <SliceSection left={
         <form onSubmit={updateProfileHandler}>
-          <div className="profile-name">{name === email.split('@')[0] ? email.split('@')[0] : name}'s Prodile</div>
+          <div className="profile-name">{name === email.split('@')[0] ? email.split('@')[0] : name}'s Profile</div>
           <div className="profile-image">
             <img src={photoURL} alt='profile' />
           </div>
@@ -138,14 +138,17 @@ const Profile = ({ userId }) => {
           </div>
         </form>
       } right={
-        <div className='star-list'>
-          {outstars
-            ? outstars.map(star => (
-              <OutstarItem key={star.id} star={star} />
-            )) : (
-              <p>없어요</p>
-            )}
-        </div>
+        <>
+          <p className="mystar-title">my stars</p>
+          <div className='star-list'>
+            {outstars
+              ? outstars.map(star => (
+                <OutstarItem key={star.id} star={star} />
+              )) : (
+                <p>없어요</p>
+              )}
+          </div>
+        </>
       } />
     </div>
   );
