@@ -111,7 +111,7 @@ const Profile = ({ userId }) => {
     <div className="my-profile">
       <SliceSection left={
         <form onSubmit={updateProfileHandler}>
-          <div className="profile-name">{name === email.split('@')[0] ? email.split('@')[0] : name}'s Profile</div>
+          <p className="profile-name">{name === email.split('@')[0] ? email.split('@')[0] : name}'s Profile</p>
           <div className="profile-image">
             <img src={photoURL} alt='profile' />
           </div>
