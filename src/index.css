@@ -97,26 +97,44 @@ header h1 {
   color: red;
 }
 
-
-.friend-wrap {
+.slice {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  
   gap: 5%;
   align-items: stretch;
 }
 
-.friend-wrap .left {
-  width: 55%
+.left {
+  width: 55%;
+  max-width: 400px;
 }
 
-.friend-wrap .right {
-  width: 40%
+.right {
+  width: 45%;
+  max-width: 400px;
 }
 
 @media screen and (max-width: 860px) {
-  .friend-wrap .left {
-    width: 100%
+  .slice .left {
+    width: 100%;
   }
 
+  .right {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+/* *************** friend ************** */
+@media screen and (max-width: 860px) {
   .friend-wrap .right {
     display: none;
   }
@@ -187,23 +205,9 @@ header h1 {
 
 
 
+/* *************** newstar ************** */
 .newstar-wrap {
   padding-top: 30px;
-}
-
-.newstar-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5%;
-  align-items: stretch;
-}
-
-.newstar-form .left {
-  width: 45%
-}
-
-.newstar-form .right {
-  width: 50%
 }
 
 .newstar-text {
@@ -212,22 +216,10 @@ header h1 {
 }
 
 @media screen and (max-width: 860px) {
-  .newstar-form .left {
-    width: 100%
-  }
-
-  .newstar-form .right {
-    width: 100%;
-  }
-  
   .newstar-text {
     height: 40vw;
   }
 }
-
-
-
-
 
 .newstar-photo-wrap {
   text-align: center;
@@ -270,6 +262,7 @@ header h1 {
 
 
 
+/* *************** login ************** */
 .login-wrap {
   width: 300px;
   margin-top: 30vh;
@@ -308,6 +301,7 @@ header h1 {
 
 
 
+/* *************** chat ************** */
 .chat-wrap {
   display: flex;
   gap: 5%;
@@ -331,10 +325,6 @@ header h1 {
 }
 
 @media screen and (max-width: 860px) {
-  .chat-wrap .left {
-    width: 100%
-  }
-
   .chat-wrap .right {
     display: none;
   }
@@ -388,20 +378,6 @@ header h1 {
   margin-left: auto;
   margin-right: auto;
   width: 70vw;
-  
-  display: flex;
-  gap: 5%;
-  justify-content: center;
-}
-
-.my-profile .left {
-  width: 45%;
-  max-width: 400px;
-}
-
-.my-profile .right {
-  width: 50%;
-  max-width: 400px;
 }
 
 .profile-name {
@@ -443,12 +419,13 @@ header h1 {
   .my-profile {
     width: 300px;
   }
+}
 
-  .my-profile .left {
-    width: 100%
-  }
 
-  .my-profile .right {
-    width: 100%;
-  }
+
+/* *************** likes ************** */
+.likes {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }

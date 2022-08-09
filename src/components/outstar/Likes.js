@@ -70,7 +70,7 @@ const Likes = ({ userId }) => {
   }
 
   return (
-    <div>
+    <div className="likes">
       <h1>{my.displayName}'s Likes</h1>
       <div className='star-list'>
         {outstars
